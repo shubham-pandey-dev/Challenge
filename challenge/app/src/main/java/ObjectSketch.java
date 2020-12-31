@@ -25,10 +25,11 @@ public class ObjectSketch extends PApplet{
 
     @Override
     public void setup() {
-        /*can give custom color (I choose grey here)..*/
-        background(COLOR);
+        background(COLOR); // for custom background shade..
         circles = new Circle[NUMBER_OF_CIRCLES];
-        /*NUMBER_OF_PARTITION_OF_HEIGHT variable changes the number of lines automatically(like 4 to 20).*/
+
+        /*Can change Number of lines by updating NUMBER_OF_PARTITIONS only (like 5 to 20).. */
+
         for(int circle = FIRST_CIRCLE; circle < NUMBER_OF_CIRCLES; circle ++){
             circles[circle] = new Circle(START_OF_X, HEIGHT / NUMBER_OF_PARTITIONS * circle);
         }
@@ -40,16 +41,22 @@ public class ObjectSketch extends PApplet{
     }
 
     private void drawCircle(){
+
         /*this helps if there are many number of circles (or lines of circles)..*/
+
         for(int circle = FIRST_CIRCLE; circle < NUMBER_OF_CIRCLES; circle ++){
             ellipse(circles[circle].getX(), circles[circle].getY(), DIAMETER, DIAMETER);
             circles[circle].addToX(circle);
+
             /*An alternative for updating:
             circles[circle].setX(circles[circle].getX() + circle);*/
+
         }
+
         if(drawingComplete()){
             finishDrawing();
         }
+
     }
 
     private boolean drawingComplete() {
@@ -58,7 +65,9 @@ public class ObjectSketch extends PApplet{
 
     private void finishDrawing() {
         super.finished = true;
+
         /*Use below line to close the window automatically after the drawing is complete
         System.exit(0);*/
+
     }
 }

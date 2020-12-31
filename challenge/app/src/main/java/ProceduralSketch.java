@@ -24,11 +24,13 @@ public class ProceduralSketch extends PApplet{
 
     @Override
     public void setup() {
-        background(COLOR);
-        // using indexing for accessing the circles..
+        background(COLOR); // for custom background shade..
+
         circleXof = new int[NUMBER_OF_CIRCLES];
         circleYof = new int[NUMBER_OF_CIRCLES];
-        // NUMBER_OF_PARTITION_OF_HEIGHT variable changes the number of lines automatically(like 4 to 20).
+
+        /*Can change Number of lines by updating NUMBER_OF_PARTITIONS only (like 5 to 20).. */
+
         for(int circle = FIRST_CIRCLE; circle < NUMBER_OF_CIRCLES; circle ++){
             circleXof[circle] = START; // not needed but for clarity.
             circleYof[circle] = HEIGHT / NUMBER_OF_PARTITIONS * circle;
@@ -41,13 +43,16 @@ public class ProceduralSketch extends PApplet{
     }
 
     private void drawCircle() {
+
         for(int circle = FIRST_CIRCLE; circle < NUMBER_OF_CIRCLES; circle ++){
             ellipse(circleXof[circle], circleYof[circle], DIAMETER, DIAMETER);
             circleXof[circle] += circle;
         }
+
         if(drawingComplete()){
             finishDrawing();
         }
+
     }
 
     private boolean drawingComplete() {
@@ -56,7 +61,9 @@ public class ProceduralSketch extends PApplet{
 
     private void finishDrawing() {
         super.finished = true;
+
         /*Use below line to close the window automatically after the drawing is complete
         System.exit(0);*/
+
     }
 }
